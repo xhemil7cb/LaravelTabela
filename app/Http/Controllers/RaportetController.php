@@ -14,6 +14,7 @@ class RaportetController extends Controller
 
     public function index()
     {
+
        // Merr Raportet nga Databaza
        $Raportet = DB::table('raportet_ditore')->get();
 
@@ -21,6 +22,7 @@ class RaportetController extends Controller
       $Kolonat = Schema::getColumnListing('raportet_ditore');
 
       return View("tabela",['raportet' => $Raportet,'kolonat'=>$Kolonat]);
+
     }
 
     public function Raporto(Request $request)
@@ -35,10 +37,10 @@ class RaportetController extends Controller
            }
 
            // Execute query
-          $raportet = $query->get();
+          $results = $query->get();
 
        $Kolonat = Schema::getColumnListing('raportet_ditore');
-       return View("tabela",['raportet' => $raportet,'kolonat'=>$Kolonat]);
+       return View("tabela",['raportet' => $results,'kolonat'=>$Kolonat]);
 
     }
 }
